@@ -1,0 +1,13 @@
+---
+- name: Run Portfolio Docker Container
+  hosts: all
+  become: yes
+  tasks:
+    - name: Start portfolio container
+      community.docker.docker_container:
+        name: portfolio-web
+        image: my-portfolio-app
+        state: started
+        ports:
+          - "8080:80"
+        restart_policy: always
