@@ -1,0 +1,19 @@
+- name: Web server setup (install + create user dirs )
+  hosts: web_servers
+  gather_facts: yes
+
+  tasks:
+    - name: Install apache (system-level)
+      ansible.builtin.apt:
+        name: apache2
+        state: present
+      become: yes
+    
+
+    - name: Install mariaDB
+      ansible.builtin.apt:
+        name: 
+        - mariadb-server
+        - mariadb-client
+        state: present
+      become: yes

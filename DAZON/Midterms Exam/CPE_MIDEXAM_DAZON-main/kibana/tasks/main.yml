@@ -1,0 +1,84 @@
+---
+# tasks file for kibana
+- name: Add GPG key for Elastic APT repository
+  tags: kibana
+  apt_key:
+    url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+    state: present
+  when: ansible_distribution == "Ubuntu"
+
+- name: Add Kibana APT repository
+  tags: kibana
+  apt_repository:
+    repo: "deb https://artifacts.elastic.co/packages/7.x/apt stable main"
+    state: present
+  when: ansible_distribution == "Ubuntu"
+
+- name: Install specific version of Kibana
+  tags: kibana
+  apt:
+    name: kibana
+    state: present
+  when: ansible_distribution == "Ubuntu"
+
+- name: Create directory for Kibana systemd override
+  tags: kibana
+  file:
+    path: /etc/systemd/system/kibana.service.d
+    state: directory
+    mode: '0755'
+    owner: root
+    group: root
+  when: ansible_distribution == "Ubuntu"
+
+- name: Check if the directory was created
+  tags: kibana
+  stat:
+    path: /etc/systemd/system/kibana.service.d
+  register: kibana_override_dir
+
+- debug:
+    msg: "Directory exists: {{ kibana_override_dir.stat.exists }}"
+
+- name: Create Kibana service override configuration
+  tags: kibana
+  file:
+    path: /etc/systemd/system/kibana.service.d/override.conf
+    state: touch  
+    owner: root
+    group: root
+    mode: '0644'
+  when: ansible_distribution == "Ubuntu"
+
+- name: Configure Kibana (Setting OpenSSL Legacy Provider)
+  tags: kibana
+  blockinfile:
+    path: /etc/systemd/system/kibana.service.d/override.conf
+    block: |
+      [Service]
+      Environment=NODE_OPTIONS=--openssl-legacy-provider
+    owner: root
+    group: root
+    mode: '0644'
+  when: ansible_distribution == "Ubuntu"
+
+- name: Configure Kibana
+  tags: kibana
+  template:
+    src: kibana.yml.j2
+    dest: /etc/kibana/kibana.yml
+  when: ansible_distribution == "Ubuntu"
+
+- name: Reload systemd
+  tags: kibana
+  command: systemctl daemon-reload
+  when: ansible_distribution == "Ubuntu"
+
+- name: Enable Kibana service
+  tags: kibana
+  service:
+    name: kibana
+    state: restarted
+  become: yes
+  when: ansible_distribution == "Ubuntu"
+

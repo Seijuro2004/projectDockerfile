@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SYS AD Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- LANDING -->
+  <section id="landing" class="landing">
+    <div class="landing-content">
+      <p class="landing-label">SYS AD Portfolio</p>
+      <h1 class="landing-title">Meet the Team</h1>
+      <p class="landing-subtitle">Select a member to view their portfolio</p>
+
+      <div class="members-grid">
+        <button class="member-card" onclick="showPortfolio('alegre')">
+          <div class="member-avatar">JA</div>
+          <div class="member-info">
+            <span class="member-name">Alegre, Jhon Isaac</span>
+          </div>
+          <span class="member-arrow">&rarr;</span>
+        </button>
+
+        <button class="member-card" onclick="showPortfolio('roldan')">
+          <div class="member-avatar">SR</div>
+          <div class="member-info">
+            <span class="member-name">Roldan, Serge</span>
+          </div>
+          <span class="member-arrow">&rarr;</span>
+        </button>
+
+        <button class="member-card" onclick="showPortfolio('dazon')">
+          <div class="member-avatar">JD</div>
+          <div class="member-info">
+            <span class="member-name">Dazon, Joshua</span>
+          </div>
+          <span class="member-arrow">&rarr;</span>
+        </button>
+
+        <button class="member-card" onclick="showPortfolio('bonita')">
+          <div class="member-avatar">KB</div>
+          <div class="member-info">
+            <span class="member-name">Bonita, Kier</span>
+          </div>
+          <span class="member-arrow">&rarr;</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio" class="portfolio hidden">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a href="#" class="logo" onclick="goHome(event)">&larr; Back to Team</a>
+        <nav class="nav-links">
+          <a href="#prelim" onclick="scrollToSection(event, 'prelim')">Prelim</a>
+          <a href="#midterm" onclick="scrollToSection(event, 'midterm')">Midterm</a>
+          <a href="#finals" onclick="scrollToSection(event, 'finals')">Finals</a>
+          <a href="#reflection" onclick="scrollToSection(event, 'reflection')">Reflection</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="portfolio-content">
+
+      <div class="member-banner">
+        <div class="member-banner-avatar" id="bannerAvatar"></div>
+        <div>
+          <h1 class="member-banner-name" id="bannerName"></h1>
+          <p class="member-banner-sub">SYS AD Portfolio</p>
+        </div>
+      </div>
+
+      <!-- PRELIM -->
+      <div id="prelim" class="term-section">
+        <div class="term-header">
+          <span class="term-badge">01</span>
+          <h2>Prelim Period</h2>
+        </div>
+        <div class="file-list" id="prelimFiles"></div>
+      </div>
+
+      <!-- MIDTERM -->
+      <div id="midterm" class="term-section">
+        <div class="term-header">
+          <span class="term-badge">02</span>
+          <h2>Midterm Period</h2>
+        </div>
+        <div class="file-list" id="midtermFiles"></div>
+      </div>
+
+      <!-- FINALS -->
+      <div id="finals" class="term-section">
+        <div class="term-header">
+          <span class="term-badge">03</span>
+          <h2>Finals Period</h2>
+        </div>
+        <div class="file-list" id="finalsFiles"></div>
+      </div>
+
+      <!-- REFLECTION -->
+      <div id="reflection" class="term-section">
+        <div class="term-header">
+          <span class="term-badge">&hearts;</span>
+          <h2>Reflection &amp; Learnings</h2>
+        </div>
+        <div class="reflection-content" id="reflectionContent"></div>
+      </div>
+
+    </div>
+
+    <footer class="footer">
+      <p>SYS AD Portfolio &copy; 2026 &mdash; Alegre, Roldan, Dazon, Bonita</p>
+    </footer>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

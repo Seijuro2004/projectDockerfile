@@ -1,0 +1,8 @@
+- name: Deploy all roles 
+  hosts: all
+  become: yes
+
+  roles:
+    - Web-Servers
+    - Database
+    

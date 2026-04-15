@@ -1,0 +1,32 @@
+---
+# tasks file for elasticsearchubuntu
+- name: Installing Java
+  tags: elasticsearchubuntu
+  apt:
+    name: default-jre
+    state: present
+  when: ansible_distribution == "Ubuntu"
+
+- name: Elastic Search Installation
+  tags: elasticsearchubuntu
+  apt:
+    name: elasticsearch
+    state: present
+  when: ansible_distribution == "Ubuntu"
+
+- name: Configure Elastic Search
+  tags: elasticsearchubuntu
+  template:
+    src: elasticsearch.yml.j2
+    dest: /etc/elasticsearch/elasticsearch.yml
+  when: ansible_distribution == "Ubuntu"
+
+- name: Starting Elastic Search
+  tags: elasticsearchubuntu
+  service:
+    name: elasticsearch
+    state: restarted
+    enabled: yes
+  when: ansible_distribution == "Ubuntu"
+
+

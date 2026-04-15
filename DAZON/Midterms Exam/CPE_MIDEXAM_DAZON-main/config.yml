@@ -1,0 +1,38 @@
+---
+- name: Install httpd,php,mariadb
+  hosts: Ubuntu, CentOS
+  become: yes
+  roles:
+    - apache
+    - php
+    - mariadb
+
+- name: Install Nagios in Ubuntu
+  hosts: Ubuntu
+  become: yes
+  roles:
+    - nagios
+
+- name: Install Elasticsearch Ubuntu
+  hosts: Ubuntu
+  become: true
+  roles:
+   - elasticsearchubuntu
+
+- name: Install Elasticsearch CentOS
+  hosts: CentOS
+  become: true
+  roles:
+   - elasticsearch
+
+- name: Install Kibana
+  hosts: Ubuntu
+  become: true
+  roles:
+   - kibana
+
+- name: Install Logstash
+  hosts: Ubuntu
+  become: true
+  roles:
+   - logstash

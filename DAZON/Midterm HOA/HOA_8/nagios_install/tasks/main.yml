@@ -1,0 +1,26 @@
+---
+# tasks file for nagios_install
+
+# 1. Install prerequisites (Needed for ./configure to succeed)
+- name: Install compilation dependencies
+  package:
+    name: 
+      - gcc
+      - make
+      - wget
+      - tar
+    state: present
+
+# 2. Run the configuration script
+- name: Run configure script
+  command: "./configure --with-command-group=nagcmd"
+  args:
+    chdir: "/tmp/nagios-4.4.6"
+  register: config_result
+
+# 3. Build the code (This will now find the Makefile)
+- name: Build Nagios from source
+  command: make all
+  args:
+    chdir: "/tmp/nagios-4.4.6"
+  when: config_result.rc == 0

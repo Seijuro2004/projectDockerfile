@@ -1,0 +1,17 @@
+---
+# tasks file for php
+- name: Install PHP in Ubuntu
+  tags: php
+  become: yes
+  apt:
+    name: php
+    state: present
+  when: ansible_distribution == "Ubuntu"
+
+- name: Install PHP in CentOS
+  tags: php
+  become: yes
+  yum:
+    name: php
+    state: present
+  when: ansible_distribution == "CentOS"
