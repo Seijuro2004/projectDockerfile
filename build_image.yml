@@ -9,10 +9,11 @@
         state: directory
         mode: '0755'
 
-    - name: Copy index.html to target VMs
+    - name: copy ALL Files
       ansible.builtin.copy:
-        src: webapp/index.html
-        dest: /opt/portfolio-app/index.html
+        src: webapp/
+        dest: /opt/portfolio-app/
+        mode: '0755'
 
     - name: Copy Dockerfile to target VMs
       ansible.builtin.copy:
