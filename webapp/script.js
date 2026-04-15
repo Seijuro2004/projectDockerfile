@@ -58,9 +58,9 @@ var members = {
       { label: 'Final Exam', path: 'ROLDAN/Finals/Final Exam.pdf', type: 'exam' }
     ],
     reflection: {
-      learned: 'Replace this with your reflection on what you learned.',
-      challenges: 'Replace this with the challenges you faced.',
-      takeaways: 'Replace this with your key takeaways.'
+      learned: 'I learned how to use Ansible to automate processes across multiple devices, as well as Docker to create containers and ensure software stays consistent across all platforms.',
+      challenges: 'I find the new syntax difficult to learn, along with troubleshooting errors related to SSH, ansible inventory files, and Dockerfile specifications.',
+      takeaways: 'When it comes to modern server management, infrastructure as code is key. It makes scalability, version control, and efficiency very easy to handle.'
     }
   },
 
@@ -86,9 +86,9 @@ var members = {
       { label: 'HOA 11.1', path: 'DAZON/Final HOA/Group 3 - HoA 11.1.docx (1).pdf', type: 'hoa' }
     ],
     reflection: {
-      learned: 'Replace this with your reflection on what you learned.',
-      challenges: 'Replace this with the challenges you faced.',
-      takeaways: 'Replace this with your key takeaways.'
+      learned: 'I learned how to transition from manual server configuration to using Ansible playbooks, allowing for consistent and repeatable deployments across different operating systems like CentOS and Ubuntu.',
+      challenges: 'Adapting to YAML syntax and troubleshooting Ansible errors required careful attention to detail, especially when dealing with strict indentation rules and module specificities.',
+      takeaways: 'Modern server management relies heavily on coding and orchestrating infrastructure. Treating infrastructure as code makes version control, rollback, and scaling highly manageable.'
     }
   },
 
@@ -110,9 +110,9 @@ var members = {
       { label: 'HOA 11.1', path: 'BONITA/FINALS HOA/Group 3 - HoA 11.1.docx.pdf', type: 'hoa' }
     ],
     reflection: {
-      learned: 'Replace this with your reflection on what you learned.',
-      challenges: 'Replace this with the challenges you faced.',
-      takeaways: 'Replace this with your key takeaways.'
+      learned: 'I learned that using Ansible playbooks is much more efficient than configuring each server. It helped me understand how automation can provide the same setup across different operating systems like CentOS and Ubuntu, making deployments faster and more reliable.',
+      challenges: 'One of the biggest challenges was getting used to YAML syntax and finding errors in Ansible. Since YAML is very sensitive to spacing and indentation, even a small mistake could stop the playbook from working, so I had to be more careful and patient while troubleshooting.',
+      takeaways: 'Modern server administration now depends a lot on automation and infrastructure orchestration. By treating infrastructure as code, it becomes easier to manage versions, make changes, roll back errors, and scale systems when needed.'
     }
   }
 };
