@@ -11,12 +11,12 @@
 
     - name: Copy index.html to target VMs
       ansible.builtin.copy:
-        src: index.html
+        src: webapp/index.html
         dest: /opt/portfolio-app/index.html
 
     - name: Copy Dockerfile to target VMs
       ansible.builtin.copy:
-        src: Dockerfile
+        src: dockerfile
         dest: /opt/portfolio-app/Dockerfile
 
     - name: Build Docker image

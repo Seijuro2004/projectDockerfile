@@ -6,8 +6,9 @@
     - name: Start portfolio container
       community.docker.docker_container:
         name: portfolio-web
-        image: my-portfolio-app
+        image: portfolio-app
         state: started
+        recreate: yes
         ports:
           - "8080:80"
         restart_policy: always
