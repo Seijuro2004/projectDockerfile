@@ -1,0 +1,28 @@
+---
+- name: Build Portfolio Docker Image on Target VMs
+  hosts: all
+  become: yes
+  tasks:
+    - name: Ensure project directory exists on targets
+      ansible.builtin.file:
+        path: /opt/portfolio-app
+        state: directory
+        mode: '0755'
+
+    - name: Copy index.html to target VMs
+      ansible.builtin.copy:
+        src: index.html
+        dest: /opt/portfolio-app/index.html
+
+    - name: Copy Dockerfile to target VMs
+      ansible.builtin.copy:
+        src: Dockerfile
+        dest: /opt/portfolio-app/Dockerfile
+
+    - name: Build Docker image
+      community.docker.docker_image:
+        name: portfolio-app
+        build:
+          path: /opt/portfolio-app
+        source: build
+        state: present
